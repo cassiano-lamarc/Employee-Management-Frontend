@@ -14,10 +14,13 @@ import { SelectModule } from 'primeng/select';
 import { InputMaskModule } from 'primeng/inputmask';
 import { DatePickerModule } from 'primeng/datepicker';
 import { ButtonModule } from 'primeng/button';
+import { CommonModule } from '@angular/common';
+import { EmployeeServiceService } from '../../../services/employee-service/employee-service.service';
 
 @Component({
   selector: 'app-employee-form',
   imports: [
+    CommonModule,
     ReactiveFormsModule,
     InputTextModule,
     FloatLabelModule,
@@ -35,19 +38,25 @@ export class EmployeeFormComponent implements OnInit {
 
   employeeForm: FormGroup;
   departments: DepartmentDto[] = [];
+  showInvalids = false;
 
-  constructor(private readonly departmentService: DepartmentServiceService) {
+  constructor(
+    private readonly employeeService: EmployeeServiceService,
+    private readonly departmentService: DepartmentServiceService
+  ) {
     this.employeeForm = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl(''),
       phone: new FormControl(''),
       departmentId: new FormControl('', [Validators.required]),
       hireDate: new FormControl('', [Validators.required]),
-      number: new FormControl(''),
-      street: new FormControl(''),
-      city: new FormControl(''),
-      state: new FormControl(''),
-      zipCode: new FormControl(''),
+      address: new FormGroup({
+        number: new FormControl(''),
+        street: new FormControl(''),
+        city: new FormControl(''),
+        state: new FormControl(''),
+        zipCode: new FormControl(''),
+      }),
     });
   }
 
@@ -67,5 +76,15 @@ export class EmployeeFormComponent implements OnInit {
     this.emitDialog.emit(false);
   }
 
-  onClickConfirm(): void {}
+  onClickConfirm(): void {
+    if (this.employeeForm.invalid) this.showInvalids = true;
+    else {
+      this.showInvalids = false;
+
+      const data = this.employeeForm.value;
+      this.employeeService.create(data).subscribe({
+        next: () => {},
+      });
+    }
+  }
 }

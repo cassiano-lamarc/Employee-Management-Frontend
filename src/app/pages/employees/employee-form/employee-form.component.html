@@ -10,6 +10,13 @@
           pInputText
           formControlName="firstName"
           class="w-100"
+          [ngClass]="
+            (employeeForm.get('firstName')?.touched &&
+              !employeeForm.get('firstName')?.valid) ||
+            (showInvalids && employeeForm.get('firstName')?.invalid)
+              ? 'ng-invalid ng-dirty'
+              : ''
+          "
         />
         <label for="firstName">First Name</label>
       </p-floatlabel>
@@ -31,6 +38,13 @@
           mask="(999) 999-9999"
           formControlName="phone"
           class="w-100"
+          [ngClass]="
+            (employeeForm.get('phone')?.touched &&
+              employeeForm.get('phone')?.invalid) ||
+            (showInvalids && employeeForm.get('phone')?.invalid)
+              ? 'ng-invalid ng-dirty'
+              : ''
+          "
         />
         <label for="phone">Phone</label>
       </p-floatlabel>
@@ -42,8 +56,16 @@
           inputId="id"
           [options]="departments"
           optionLabel="description"
+          optionValue="id"
           styleClass="w-100"
           variant="filled"
+          [ngClass]="
+            (employeeForm.get('departmentId')?.invalid &&
+              employeeForm.get('departmentId')?.touched) ||
+            (showInvalids && employeeForm.get('departmentId')?.invalid)
+              ? 'ng-invalid ng-dirty'
+              : ''
+          "
         />
         <label for="departments">Departments</label>
       </p-floatlabel>
@@ -57,39 +79,48 @@
           class="w-100"
           [showOnFocus]="false"
           appendTo="body"
+          [ngClass]="
+            (employeeForm.get('hireDate')?.invalid &&
+              employeeForm.get('hireDate')?.touched) ||
+            (showInvalids && employeeForm.get('hireDate')?.invalid)
+              ? 'ng-invalid ng-dirty'
+              : ''
+          "
         />
 
         <label for="hireDate">Hire date</label>
       </p-floatlabel>
     </div>
+  </div>
+  <div class="row" formGroupName="address">
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-12 mb-2">
       <p-floatlabel variant="in">
         <p-inputmask mask="99999-999" formControlName="zipCode" class="w-100" />
-        <label for="firstName">Zip Code</label>
+        <label for="zipCode">Zip Code</label>
       </p-floatlabel>
     </div>
     <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-12 mb-2">
       <p-floatlabel variant="in">
         <input type="text" pInputText formControlName="number" class="w-100" />
-        <label for="firstName">Number</label>
+        <label for="number">Number</label>
       </p-floatlabel>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12 mb-2">
       <p-floatlabel variant="in">
         <input type="text" pInputText formControlName="street" class="w-100" />
-        <label for="firstName">Street</label>
+        <label for="street">Street</label>
       </p-floatlabel>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12 mb-2">
       <p-floatlabel variant="in">
         <input type="text" pInputText formControlName="city" class="w-100" />
-        <label for="firstName">City</label>
+        <label for="city">City</label>
       </p-floatlabel>
     </div>
     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12 mb-2">
       <p-floatlabel variant="in">
         <input type="text" pInputText formControlName="state" class="w-100" />
-        <label for="firstName">State</label>
+        <label for="state">State</label>
       </p-floatlabel>
     </div>
   </div>
