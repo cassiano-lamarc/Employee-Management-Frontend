@@ -1,5 +1,18 @@
-<p-card header="Simple Card">
-    <p class="m-0">
-        Lorem ipsum dolor sit amet...
-    </p>
-</p-card>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      @for (employee of employees; track $index) {
+      <p-card [header]="employee?.fullName" class="card">
+        <div class="row">
+          <div class="col-2 d-flex justify-content-center">
+            <div class="avatar-card"></div>
+          </div>
+          <div class="col-7">
+            <p class="m-0">Lorem ipsum dolor sit amet...</p>
+          </div>
+          <div class="col-3"></div>
+        </div> </p-card
+      >}
+    </div>
+  </div>
+</div>

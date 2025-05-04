@@ -1,1 +1,12 @@
-<router-outlet />
+<div class="full-page">
+  <p-toolbar>
+    <div class="w-100 d-flex justify-content-end">
+      @for (item of faetures; track $index) {
+      <p-button [routerLink]="item?.routeUrl" routerLinkActive="active">{{
+        item?.buttonText
+      }}</p-button
+      >}
+    </div>
+  </p-toolbar>
+  <router-outlet />
+</div>
