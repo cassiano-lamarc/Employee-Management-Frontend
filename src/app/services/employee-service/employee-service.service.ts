@@ -19,4 +19,8 @@ export class EmployeeServiceService {
   getAll(): Observable<EmployeesDTO[]> {
     return this.httpClient.get<EmployeesDTO[]>(this.baseApiUrl);
   }
+
+  delete(id: string): Observable<boolean> {
+    return this.httpClient.delete<boolean>(`${this.baseApiUrl}/${id}`);
+  }
 }

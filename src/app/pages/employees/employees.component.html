@@ -32,6 +32,8 @@
                 icon="pi pi-times"
                 aria-label="delete"
                 severity="danger"
+                (click)="confirm2($event, employee.id)"
+                [outlined]="true"
               ></p-button>
             </div>
           </div>
@@ -51,3 +53,5 @@
     (emitDialog)="emitDialog($event)"
   ></app-employee-form>
 </p-dialog>
+
+<p-confirmdialog />
