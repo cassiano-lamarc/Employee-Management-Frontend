@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 import { EmployeesDTO } from '../../models/employee/dtos/employees.dto';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { EmployeeServiceService } from '../../services/employee-service/employee-service.service';
 import { FormatDatePipe } from '../../pipes/format-date.pipe';
-import { ConfirmDialogModule } from 'primeng/confirmdialog';
-import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-employees',
@@ -51,6 +51,18 @@ export class EmployeesComponent implements OnInit {
 
   emitDialog($event: boolean): void {
     this.closeDialog();
+
+    if ($event) {
+      this.messageService.add({
+        severity: 'info',
+        summary: 'Success',
+        detail: 'Record created successfully',
+      });
+
+      setTimeout(() => {
+        this.getEmployees();
+      }, 999);
+    }
   }
 
   getEmployees(): void {

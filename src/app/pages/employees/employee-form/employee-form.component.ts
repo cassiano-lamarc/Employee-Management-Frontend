@@ -39,6 +39,7 @@ export class EmployeeFormComponent implements OnInit {
   employeeForm: FormGroup;
   departments: DepartmentDto[] = [];
   showInvalids = false;
+  maxDate = new Date(Date.now());
 
   constructor(
     private readonly employeeService: EmployeeServiceService,
@@ -83,7 +84,9 @@ export class EmployeeFormComponent implements OnInit {
 
       const data = this.employeeForm.value;
       this.employeeService.create(data).subscribe({
-        next: () => {},
+        next: () => {
+          this.emitDialog.emit(true);
+        },
       });
     }
   }
