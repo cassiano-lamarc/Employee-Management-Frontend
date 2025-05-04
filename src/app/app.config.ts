@@ -6,7 +6,12 @@ import { providePrimeNG } from 'primeng/config';
 import Lara from '@primeng/themes/lara';
 
 import { routes } from './app.routes';
-import { provideHttpClient } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,10 +22,11 @@ export const appConfig: ApplicationConfig = {
       theme: {
         preset: Lara,
         options: {
-          darkModeSelector: true
-        }
+          darkModeSelector: true,
+        },
       },
     }),
-    provideHttpClient()
+    provideHttpClient(withInterceptorsFromDi()),
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
 };

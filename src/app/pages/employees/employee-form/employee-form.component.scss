@@ -1,0 +1,25 @@
+form {
+  display: flex;
+  flex-direction: column;
+
+  .footer-buttons {
+    width: 100%;
+    margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    justify-content: end;
+  }
+}
+
+::ng-deep {
+  .p-inputtext {
+    width: 100%;
+  }
+  .p-datepicker {
+    width: 100%;
+  }
+  .p-inputtext {
+    width: 100%;
+  }
+}

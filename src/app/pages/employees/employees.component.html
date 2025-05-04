@@ -1,4 +1,8 @@
 <div class="container">
+  <div class="d-flex justify-content-between align-items-center">
+    <h1>Manage Employees</h1>
+    <p-button (onClick)="showDialog(null)">Add Employee</p-button>
+  </div>
   <div class="row">
     <div class="col-12">
       @for (employee of employees; track $index) {
@@ -16,3 +20,11 @@
     </div>
   </div>
 </div>
+<p-dialog
+  maskStyleClass="backdrop-blur-sm"
+  [(visible)]="dialogFormVisible"
+  [header]="selectedEmployeeId ? 'Edit Employee' : 'Add Employee'"
+  [style]="{ width: '50rem' }"
+>
+  <app-employee-form [employeeId]="selectedEmployeeId" (emitDialog)="emitDialog($event)"></app-employee-form>
+</p-dialog>

@@ -11,7 +11,7 @@ import { LoginResponse } from '../../core/models/login.response';
   providedIn: 'root',
 })
 export class LoginServiceService {
-  constructor(private http: HttpClient) {}
+  constructor(private readonly http: HttpClient) {}
 
   authLogin(loginData: LoginModel): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${environment.baseUrl}Auth/login`, loginData);

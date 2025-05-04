@@ -1,1 +1,105 @@
-<p>employee-form works!</p>
+<form
+  [formGroup]="employeeForm"
+  class="d-flex justify-content-center align-items-center"
+>
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-12 mb-2">
+      <p-floatlabel variant="in">
+        <input
+          type="text"
+          pInputText
+          formControlName="firstName"
+          class="w-100"
+        />
+        <label for="firstName">First Name</label>
+      </p-floatlabel>
+    </div>
+    <div class="col-lg-4 col-md-4 col-12 mb-2">
+      <p-floatlabel variant="in">
+        <input
+          type="text"
+          pInputText
+          formControlName="lastName"
+          class="w-100"
+        />
+        <label for="lasttName">Last Name</label>
+      </p-floatlabel>
+    </div>
+    <div class="col-lg-4 col-md-4 col-12 mb-2">
+      <p-floatlabel class="w-full md:w-56 w-100" variant="in">
+        <p-inputmask
+          mask="(999) 999-9999"
+          formControlName="phone"
+          class="w-100"
+        />
+        <label for="phone">Phone</label>
+      </p-floatlabel>
+    </div>
+    <div class="col-lg-6 col-md-6 col-12 mb-2">
+      <p-floatlabel class="w-full md:w-56 w-100" variant="in">
+        <p-select
+          formControlName="departmentId"
+          inputId="id"
+          [options]="departments"
+          optionLabel="description"
+          styleClass="w-100"
+          variant="filled"
+        />
+        <label for="departments">Departments</label>
+      </p-floatlabel>
+    </div>
+    <div class="col-lg-6 col-md-6 col-12 mb-2">
+      <p-floatlabel variant="in" class="w-100">
+        <p-datepicker
+          formControlName="hireDate"
+          [showIcon]="true"
+          inputId="hireDate"
+          class="w-100"
+          [showOnFocus]="false"
+          appendTo="body"
+        />
+
+        <label for="hireDate">Hire date</label>
+      </p-floatlabel>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-12 mb-2">
+      <p-floatlabel variant="in">
+        <p-inputmask mask="99999-999" formControlName="zipCode" class="w-100" />
+        <label for="firstName">Zip Code</label>
+      </p-floatlabel>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 col-12 mb-2">
+      <p-floatlabel variant="in">
+        <input type="text" pInputText formControlName="number" class="w-100" />
+        <label for="firstName">Number</label>
+      </p-floatlabel>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12 mb-2">
+      <p-floatlabel variant="in">
+        <input type="text" pInputText formControlName="street" class="w-100" />
+        <label for="firstName">Street</label>
+      </p-floatlabel>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12 mb-2">
+      <p-floatlabel variant="in">
+        <input type="text" pInputText formControlName="city" class="w-100" />
+        <label for="firstName">City</label>
+      </p-floatlabel>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 col-12 mb-2">
+      <p-floatlabel variant="in">
+        <input type="text" pInputText formControlName="state" class="w-100" />
+        <label for="firstName">State</label>
+      </p-floatlabel>
+    </div>
+  </div>
+  <div class="footer-buttons">
+    <p-button
+      (onClick)="onClickCancel()"
+      label="Cancel"
+      severity="secondary"
+    ></p-button>
+    <p-button (onClick)="onClickConfirm()" label="Confirm" severity="primary">
+    </p-button>
+  </div>
+</form>
