@@ -15,7 +15,9 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
-import { LoaderComponent } from "./shared/components/loader/loader.component";
+import { LoaderComponent } from './shared/components/loader/loader.component';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-root',
@@ -25,8 +27,9 @@ import { LoaderComponent } from "./shared/components/loader/loader.component";
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
-    LoaderComponent
-],
+    LoaderComponent,
+    ToastModule,
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [
@@ -35,6 +38,8 @@ import { LoaderComponent } from "./shared/components/loader/loader.component";
       useClass: AuthInterceptor,
       multi: true,
     },
+
+    MessageService
   ],
 })
 export class AppComponent {

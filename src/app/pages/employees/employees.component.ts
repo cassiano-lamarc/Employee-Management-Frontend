@@ -10,6 +10,8 @@ import { EmployeesDTO } from '../../models/employee/dtos/employees.dto';
 import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { EmployeeServiceService } from '../../services/employee-service/employee-service.service';
 import { FormatDatePipe } from '../../pipes/format-date.pipe';
+import { Router } from '@angular/router';
+import { Toast } from 'primeng/toast';
 
 @Component({
   selector: 'app-employees',
@@ -23,7 +25,7 @@ import { FormatDatePipe } from '../../pipes/format-date.pipe';
   ],
   templateUrl: './employees.component.html',
   styleUrl: './employees.component.scss',
-  providers: [ConfirmationService, MessageService],
+  providers: [ConfirmationService],
 })
 export class EmployeesComponent implements OnInit {
   employees: EmployeesDTO[] = [];
@@ -33,7 +35,8 @@ export class EmployeesComponent implements OnInit {
   constructor(
     private readonly employeeService: EmployeeServiceService,
     private readonly confirmationService: ConfirmationService,
-    private readonly messageService: MessageService
+    private readonly messageService: MessageService,
+    private readonly router: Router
   ) {}
 
   ngOnInit(): void {
@@ -54,7 +57,7 @@ export class EmployeesComponent implements OnInit {
 
     if ($event) {
       this.messageService.add({
-        severity: 'info',
+        severity: 'success',
         summary: 'Success',
         detail: 'Record created successfully',
       });
@@ -73,7 +76,7 @@ export class EmployeesComponent implements OnInit {
     });
   }
 
-  confirm2(event: Event, selectedEmployeeId: string) {
+  confirmDeletion(event: Event, selectedEmployeeId: string) {
     this.confirmationService.confirm({
       target: event.target as EventTarget,
       message: 'Do you want to delete this record?',
@@ -101,7 +104,7 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.delete(selectedEmployeeId).subscribe({
       next: () => {
         this.messageService.add({
-          severity: 'info',
+          severity: 'success',
           summary: 'Confirmed',
           detail: 'Record deleted',
         });
@@ -111,5 +114,9 @@ export class EmployeesComponent implements OnInit {
         }, 999);
       },
     });
+  }
+
+  viewDetails(employeeId: string): void {
+    this.router.navigate([`/employees/${employeeId}`]);
   }
 }

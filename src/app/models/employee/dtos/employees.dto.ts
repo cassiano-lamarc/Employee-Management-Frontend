@@ -1,13 +1,16 @@
 import { DepartmentDto } from '../../department/dto/department.dto';
+import { AddressDto } from './address.dto';
 
 export interface EmployeesDTO {
   id: string;
   firstName: string;
   lastName?: string;
-  departmentId?: string;
-  department?: string;
+  deparmentId?: string;
   hireDate?: Date;
   avatarUrl: string;
+  number: number;
+  phone: string;
 
-  deparment: DepartmentDto;
+  address: AddressDto;
+  department: DepartmentDto;
 }

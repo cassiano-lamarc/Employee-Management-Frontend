@@ -41,12 +41,14 @@
                 label="View Details"
                 severity="primary"
                 icon="pi pi-eye"
+                (onClick)="viewDetails(employee?.id ?? '')"
+                routerLinkActive="router-link-active"
               ></p-button>
               <p-button
                 icon="pi pi-times"
                 aria-label="delete"
                 severity="danger"
-                (click)="confirm2($event, employee.id)"
+                (click)="confirmDeletion($event, employee.id)"
                 [outlined]="true"
               ></p-button>
             </div>

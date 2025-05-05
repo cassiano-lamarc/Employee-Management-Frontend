@@ -1,1 +1,83 @@
-<p>employee-details works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-4 col-img">
+      <img
+        [src]="`https://localhost:7126/${employee?.avatarUrl}`"
+        alt="Avatar"
+        class="w-100 h-100"
+      />
+    </div>
+    <div class="col-8">
+      <div class="employee-data">
+        <div class="row">
+          <div class="col-10">
+            <div class="employee-name">
+              {{ employee?.firstName }} {{ employee?.lastName }}
+            </div>
+            <div class="employee-info">
+              <span>Employee ID: </span>
+              <span>{{ employee?.number }}</span>
+            </div>
+            <div class="employee-info">
+              <span>Department: </span>
+              <span> {{ employee?.department?.description }}</span>
+            </div>
+            <div class="employee-info">
+              <span>Telephone: </span>
+              <span>{{ employee?.phone }}</span>
+            </div>
+            <div class="employee-info">
+              <span>Address: </span>
+              <span
+                >{{ employee?.address?.zipCode }},
+                {{ employee?.address?.number }},
+                {{ employee?.address?.state }},{{ employee?.address?.city }},{{
+                  employee?.address?.street
+                }},</span
+              >
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="employee-hireDate">
+              <span class="employee-hireDate-title">Hire Date</span>
+              <span>{{
+                employee?.hireDate?.toString() ?? "" | formatDate
+              }}</span>
+              <span>{{
+                employee?.hireDate?.toString() ?? "" | formatDate : "diff"
+              }}</span>
+            </div>
+          </div>
+        </div>
+        <form [formGroup]="departmentForm" class="update-department">
+          <label for="departmentId">Department: </label>
+          <p-select
+            formControlName="departmentId"
+            [options]="departments"
+            optionLabel="description"
+            optionValue="id"
+            styleClass="w-100"
+            variant="filled"
+            size="small"
+          />
+          <p-button
+            (onClick)="onClickConfirm()"
+            label="Confirm"
+            severity="primary"
+            size="small"
+          ></p-button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="d-flex justify-content-start mt-5">
+      <p-button
+        (onClick)="onClickBack()"
+        label="Back"
+        severity="secondary"
+        icon="pi pi-arrow-left"
+      ></p-button>
+    </div>
+  </div>
+</div>

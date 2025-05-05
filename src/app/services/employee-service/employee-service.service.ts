@@ -30,4 +30,17 @@ export class EmployeeServiceService {
       file
     );
   }
+
+  getById(employeeId: string): Observable<EmployeesDTO> {
+    return this.httpClient.get<EmployeesDTO>(
+      `${this.baseApiUrl}/${employeeId}`
+    );
+  }
+
+  updateDepartment(employeeId: string, employeeDepartmentId: string): Observable<boolean> {
+    return this.httpClient.patch<boolean>(this.baseApiUrl, {
+      id: employeeId,
+      departmentId: employeeDepartmentId,
+    });
+  }
 }

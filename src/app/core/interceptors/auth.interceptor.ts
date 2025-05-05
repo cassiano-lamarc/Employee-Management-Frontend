@@ -14,7 +14,7 @@ import { LoaderService } from '../services/loader-service/loader.service';
 export class AuthInterceptor implements HttpInterceptor {
   constructor(
     private readonly router: Router,
-    private readonly loaderService: LoaderService
+    private readonly loaderService: LoaderService,
   ) {}
 
   intercept(
