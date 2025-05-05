@@ -39,7 +39,7 @@ import { MessageService } from 'primeng/api';
       multi: true,
     },
 
-    MessageService
+    MessageService,
   ],
 })
 export class AppComponent {
@@ -50,6 +50,8 @@ export class AppComponent {
       routeUrl: '/employees',
     },
   ];
+  userName = '';
+  userLogged = false;
 
   constructor(
     private router: Router,
@@ -72,5 +74,8 @@ export class AppComponent {
           this.titleService.setTitle(title);
         }
       });
+
+    this.userName = localStorage.getItem('userName')?.toString() ?? '';
+    this.userLogged = !!localStorage.getItem('access_token');
   }
 }

@@ -59,10 +59,11 @@
   </div>
 </div>
 <p-dialog
-  maskStyleClass="backdrop-blur-sm"
   [(visible)]="dialogFormVisible"
   [header]="selectedEmployeeId ? 'Edit Employee' : 'Add Employee'"
   [style]="{ width: '50rem' }"
+  maskStyleClass="dark-overlay"
+  [baseZIndex]="10000"
 >
   <app-employee-form
     [employeeId]="selectedEmployeeId"

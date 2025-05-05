@@ -1,13 +1,21 @@
 <div class="full-page">
-  <p-toolbar>
-    <div class="w-100 d-flex justify-content-end">
-      @for (item of faetures; track $index) {
-      <p-button [routerLink]="item?.routeUrl" routerLinkActive="active">{{
-        item?.buttonText
-      }}</p-button
-      >}
+  @if (userLogged) {
+  <p-toolbar styleClass="bg-dark">
+    <div class="w-100 d-flex justify-content-between">
+      <span class="text d-flex align-items-center">Hello {{ userName }}!</span>
+      <div class="d-flex justify-content-end">
+        @for (item of faetures; track $index) {
+        <p-button
+          severity="secondary"
+          [routerLink]="item?.routeUrl"
+          routerLinkActive="active"
+          >{{ item?.buttonText }}</p-button
+        >}
+      </div>
     </div>
   </p-toolbar>
+  }
+
   <app-loader></app-loader>
   <p-toast></p-toast>
   <router-outlet />

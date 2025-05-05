@@ -25,6 +25,10 @@
 }
 
 ::ng-deep {
+  .dark-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(4px);
+  }
   .p-card-body {
     height: 180px;
     .p-card-content {
