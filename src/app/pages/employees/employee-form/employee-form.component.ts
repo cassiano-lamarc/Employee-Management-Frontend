@@ -16,6 +16,7 @@ import { DatePickerModule } from 'primeng/datepicker';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { EmployeeServiceService } from '../../../services/employee-service/employee-service.service';
+import { FileUploadEvent, FileUploadModule } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-employee-form',
@@ -28,6 +29,7 @@ import { EmployeeServiceService } from '../../../services/employee-service/emplo
     InputMaskModule,
     DatePickerModule,
     ButtonModule,
+    FileUploadModule,
   ],
   templateUrl: './employee-form.component.html',
   styleUrl: './employee-form.component.scss',
@@ -40,6 +42,7 @@ export class EmployeeFormComponent implements OnInit {
   departments: DepartmentDto[] = [];
   showInvalids = false;
   maxDate = new Date(Date.now());
+  selectedFile?: File;
 
   constructor(
     private readonly employeeService: EmployeeServiceService,
@@ -84,10 +87,26 @@ export class EmployeeFormComponent implements OnInit {
 
       const data = this.employeeForm.value;
       this.employeeService.create(data).subscribe({
-        next: () => {
-          this.emitDialog.emit(true);
+        next: (value: string) => {
+          if (this.selectedFile && value) {
+            const formData = new FormData();
+            formData.append('file', this.selectedFile);
+
+            this.employeeService.uploadAvatar(formData, value).subscribe({
+              next: () => {
+                this.emitDialog.emit(true);
+              },
+            });
+          } else this.emitDialog.emit(true);
         },
       });
+    }
+  }
+
+  onFileSelect(event: any): void {
+    const file = event.files?.[0];
+    if (file) {
+      this.selectedFile = file;
     }
   }
 }

@@ -15,6 +15,7 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { LoaderComponent } from "./shared/components/loader/loader.component";
 
 @Component({
   selector: 'app-root',
@@ -24,7 +25,8 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
-  ],
+    LoaderComponent
+],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [

@@ -12,8 +12,8 @@ export class EmployeeServiceService {
 
   constructor(private readonly httpClient: HttpClient) {}
 
-  create(data: any): Observable<object> {
-    return this.httpClient.post<Observable<object>>(this.baseApiUrl, data);
+  create(data: any): Observable<string> {
+    return this.httpClient.post<string>(this.baseApiUrl, data);
   }
 
   getAll(): Observable<EmployeesDTO[]> {
@@ -22,5 +22,12 @@ export class EmployeeServiceService {
 
   delete(id: string): Observable<boolean> {
     return this.httpClient.delete<boolean>(`${this.baseApiUrl}/${id}`);
+  }
+
+  uploadAvatar(file: FormData, employeeId: string): Observable<boolean> {
+    return this.httpClient.post<boolean>(
+      `${this.baseApiUrl}/upload-avatar/${employeeId}`,
+      file
+    );
   }
 }

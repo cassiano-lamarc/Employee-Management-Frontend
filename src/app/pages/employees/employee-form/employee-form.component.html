@@ -125,6 +125,24 @@
       </p-floatlabel>
     </div>
   </div>
+  <div class="row">
+    <div class="col-12 avatar-input">
+      <label id="avatar" for="avatar">Avatar: </label>
+      <p-fileUpload
+        id="avatar"
+        #fu
+        mode="basic"
+        name="avatar"
+        chooseLabel="Choose"
+        chooseIcon="pi pi-upload"
+        accept="image/*"
+        maxFileSize="1000000"
+        [auto]="false"
+        [customUpload]="true"
+        (onSelect)="onFileSelect($event)"
+      />
+    </div>
+  </div>
   <div class="footer-buttons">
     <p-button
       (onClick)="onClickCancel()"

@@ -12,7 +12,21 @@
       >
         <div class="row">
           <div class="col-2 d-flex justify-content-center">
-            <div class="avatar-card"></div>
+            <div class="avatar-card">
+              @if (employee?.avatarUrl) {
+              <img
+                [src]="`https://localhost:7126/${employee?.avatarUrl}`"
+                alt="Avatar"
+                class="w-100 h-100"
+              />
+              } @else {
+              <img
+                src="../../../assets/images/deafult-avatar.png"
+                alt="Avatar"
+                class="w-100 h-100"
+              />
+              }
+            </div>
           </div>
           <div class="col-7">
             <div class="info">
