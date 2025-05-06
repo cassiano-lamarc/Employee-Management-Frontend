@@ -1,11 +1,15 @@
 <div class="container">
   <div class="row">
     <div class="col-4 col-img">
+      @if (employee?.avatarUrl) {
       <img
         [src]="`https://localhost:7126/${employee?.avatarUrl}`"
         alt="Avatar"
         class="w-100 h-100"
       />
+      } @else {
+      <img src="default-avatar.png" alt="Avatar" class="w-100 h-100" />
+      }
     </div>
     <div class="col-8">
       <div class="employee-data">

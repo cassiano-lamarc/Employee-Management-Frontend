@@ -1,9 +1,9 @@
 <div class="full-page">
-  @if (userLogged) {
+  @if (isLoggedIn | async ) {
   <p-toolbar styleClass="bg-dark">
     <div class="w-100 d-flex justify-content-between">
       <span class="text d-flex align-items-center">Hello {{ userName }}!</span>
-      <div class="d-flex justify-content-end">
+      <div class="d-flex justify-content-end buttons-toolbar">
         @for (item of faetures; track $index) {
         <p-button
           severity="secondary"
@@ -11,11 +11,17 @@
           routerLinkActive="active"
           >{{ item?.buttonText }}</p-button
         >}
+        <p-button
+          severity="danger"
+          icon="pi pi-sign-out"
+          iconPos="right"
+          (click)="onClickLogout()"
+        >
+        </p-button>
       </div>
     </div>
   </p-toolbar>
   }
-
   <app-loader></app-loader>
   <p-toast></p-toast>
   <router-outlet />

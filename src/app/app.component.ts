@@ -10,7 +10,7 @@ import {
 import { Title } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
-import { filter, map, mergeMap } from 'rxjs';
+import { filter, map, mergeMap, Observable } from 'rxjs';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 
@@ -18,6 +18,8 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { AuthService } from './core/services/auth-service/auth.service';
+import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -29,6 +31,7 @@ import { MessageService } from 'primeng/api';
     RouterLinkActive,
     LoaderComponent,
     ToastModule,
+    AsyncPipe,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
@@ -50,13 +53,20 @@ export class AppComponent {
       routeUrl: '/employees',
     },
   ];
-  userName = '';
-  userLogged = false;
+
+  get userName(): string {
+    return localStorage.getItem('userName')?.toString() ?? '';
+  }
+
+  get isLoggedIn(): Observable<boolean> {
+    return this.authService.isLoggedIn$;
+  }
 
   constructor(
-    private router: Router,
-    private activatedRoute: ActivatedRoute,
-    private titleService: Title
+    private readonly router: Router,
+    private readonly activatedRoute: ActivatedRoute,
+    private readonly titleService: Title,
+    private readonly authService: AuthService
   ) {
     this.router.events
       .pipe(
@@ -74,8 +84,10 @@ export class AppComponent {
           this.titleService.setTitle(title);
         }
       });
+  }
 
-    this.userName = localStorage.getItem('userName')?.toString() ?? '';
-    this.userLogged = !!localStorage.getItem('access_token');
+  onClickLogout(): void {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }
