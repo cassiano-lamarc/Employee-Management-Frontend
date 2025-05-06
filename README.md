@@ -1,59 +1,38 @@
 # SoftwaremindFrontendEmployeeManager
+Employees Management Frontend – Angular 19
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.4.
+This is the frontend application for the Employees Management API, built using Angular 19. It consumes a secure .NET 9 backend via JWT-based authentication and provides a clean, responsive interface for managing employee data.
 
-## Development server
 
-To start a local development server, run:
+Features
+Full CRUD (Create, Read, Update, Delete) for employees
+- Responsive design using PrimeNG
+- Authentication via JWT token
+- Guards and interceptors to protect routes and attach tokens
+- Lazy loading and modular architecture
+- Global loading spinner for API calls
+- Form validation with reactive forms
+- Reusable UI components
 
-```bash
-ng serve
-```
+Technologies Used
+- Angular 19
+- PrimeNG
+- RxJS
+- Angular Router
+- Reactive Forms
+- TypeScript
+- JWT-based Auth (via interceptor)
+- SCSS for styling
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+Development Setup
+- Clone the repository
+- Install dependencies:
+  npm install
+-Run the app:
+  ng serve -o
+  
+Requirements
+- Node.js v18+
+- Angular CLI v19+
+- SoftwareMind.Employee.Backend API running at the configured URL
