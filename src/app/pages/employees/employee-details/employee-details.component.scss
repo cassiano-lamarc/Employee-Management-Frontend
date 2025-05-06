@@ -1,44 +1,48 @@
-.col-img {
-  border: 1px solid #80808061;
-  min-height: 180px;
+.container {
+  margin-top: 24px;
 
-  img {
-    width: 100%;
-  }
-}
+  .col-img {
+    border: 1px solid #80808061;
+    min-height: 180px;
 
-.employee-data {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  gap: 8px;
-
-  .employee-name {
-    font-weight: bold;
+    img {
+      width: 100%;
+    }
   }
 
-  .employee-info {
+  .employee-data {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 8px;
+
+    .employee-name {
+      font-weight: bold;
+    }
+
+    .employee-info {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+  }
+
+  .employee-hireDate {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 4px;
+
+    .employee-hireDate-title {
+      font-weight: bold;
+    }
+  }
+
+  .update-department {
     display: flex;
     flex-direction: row;
     gap: 8px;
+    width: 100%;
+    justify-content: start;
   }
-}
-
-.employee-hireDate {
-  display: flex;
-  flex-direction: column;
-  justify-content: start;
-  gap: 4px;
-
-  .employee-hireDate-title {
-    font-weight: bold;
-  }
-}
-
-.update-department {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  width: 100%;
-  justify-content: start;
 }

@@ -3,6 +3,7 @@ import { EmployeesComponent } from './pages/employees/employees.component';
 import { EmployeeDetailsComponent } from './pages/employees/employee-details/employee-details.component';
 import { AuthGuard } from './auth.guard';
 import { LoginComponent } from './pages/login/login.component';
+import { NotfoundComponent } from './pages/notfound/notfound.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'employees', pathMatch: 'full' },
@@ -22,5 +23,5 @@ export const routes: Routes = [
     path: 'login',
     component: LoginComponent,
   },
-  { path: '**', redirectTo: 'employees' },
+  { path: '**', component: NotfoundComponent },
 ];
