@@ -1,9 +1,8 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { EmployeesDTO } from '../../../models/employee/dtos/employees.dto';
 import { EmployeeServiceService } from '../../../services/employee-service/employee-service.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormatDatePipe } from '../../../pipes/format-date.pipe';
-import { FloatLabelModule } from 'primeng/floatlabel';
 import { SelectModule } from 'primeng/select';
 import { DepartmentServiceService } from '../../../services/department-service/department-service.service';
 import { DepartmentDto } from '../../../models/department/dto/department.dto';
@@ -83,6 +82,8 @@ export class EmployeeDetailsComponent implements OnInit {
             detail: 'Record updated successfully',
             life: 3000,
           });
+
+          this.getEmployeeDetails();
         },
       });
   }

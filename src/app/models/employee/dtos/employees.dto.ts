@@ -11,6 +11,9 @@ export interface EmployeesDTO {
   number: number;
   phone: string;
 
-  address: AddressDto;
-  department: DepartmentDto;
+  departmentDescription: string;
+  createdUserName: string;
+  updatedUserName: string;
+
+  addresss: AddressDto;
 }

@@ -16,7 +16,7 @@ import { DatePickerModule } from 'primeng/datepicker';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { EmployeeServiceService } from '../../../services/employee-service/employee-service.service';
-import { FileUploadEvent, FileUploadModule } from 'primeng/fileupload';
+import { FileUploadModule } from 'primeng/fileupload';
 
 @Component({
   selector: 'app-employee-form',

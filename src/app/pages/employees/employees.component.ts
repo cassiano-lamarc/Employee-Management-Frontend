@@ -11,7 +11,6 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { EmployeeServiceService } from '../../services/employee-service/employee-service.service';
 import { FormatDatePipe } from '../../pipes/format-date.pipe';
 import { Router } from '@angular/router';
-import { Toast } from 'primeng/toast';
 
 @Component({
   selector: 'app-employees',
@@ -109,9 +108,7 @@ export class EmployeesComponent implements OnInit {
           detail: 'Record deleted',
         });
 
-        setTimeout(() => {
-          this.getEmployees();
-        }, 999);
+        this.getEmployees();
       },
     });
   }

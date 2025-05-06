@@ -18,12 +18,17 @@
 
     .employee-name {
       font-weight: bold;
+      font-size: x-large;
     }
 
     .employee-info {
       display: flex;
       flex-direction: row;
       gap: 8px;
+
+      label {
+        font-weight: bold;
+      }
     }
   }
 
@@ -44,5 +49,9 @@
     gap: 8px;
     width: 100%;
     justify-content: start;
+
+    label {
+      font-weight: bold;
+    }
   }
 }

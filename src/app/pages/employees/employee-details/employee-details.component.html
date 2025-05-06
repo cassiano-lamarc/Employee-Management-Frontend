@@ -19,25 +19,25 @@
               {{ employee?.firstName }} {{ employee?.lastName }}
             </div>
             <div class="employee-info">
-              <span>Employee ID: </span>
+              <label>Employee ID: </label>
               <span>{{ employee?.number }}</span>
             </div>
             <div class="employee-info">
-              <span>Department: </span>
-              <span> {{ employee?.department?.description }}</span>
+              <label>Department: </label>
+              <span> {{ employee?.departmentDescription }}</span>
             </div>
             <div class="employee-info">
-              <span>Telephone: </span>
+              <label>Telephone: </label>
               <span>{{ employee?.phone }}</span>
             </div>
             <div class="employee-info">
-              <span>Address: </span>
+              <label>Address: </label>
               <span
-                >{{ employee?.address?.zipCode }},
-                {{ employee?.address?.number }},
-                {{ employee?.address?.state }},{{ employee?.address?.city }},{{
-                  employee?.address?.street
-                }},</span
+                >{{ employee?.addresss?.zipCode }},
+                {{ employee?.addresss?.number }},
+                {{ employee?.addresss?.state }},{{ employee?.addresss?.city }},{{
+                  employee?.addresss?.street
+                }}</span
               >
             </div>
           </div>
