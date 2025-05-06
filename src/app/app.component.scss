@@ -10,3 +10,9 @@
 .buttons-toolbar {
   gap: 8px;
 }
+
+::ng-deep {
+  .p-toolbar{
+    border: none !important;
+  }
+}
