@@ -11,6 +11,7 @@ import { EmployeeFormComponent } from './employee-form/employee-form.component';
 import { EmployeeServiceService } from '../../services/employee-service/employee-service.service';
 import { FormatDatePipe } from '../../pipes/format-date.pipe';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-employees',
@@ -110,6 +111,16 @@ export class EmployeesComponent implements OnInit {
 
         this.getEmployees();
       },
+      error: (error: HttpErrorResponse) => {
+        if (error.status === 400){
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Error',
+            detail: error?.error?.title ?? 'Try again!',
+            life: 3000,
+          });
+        }
+      }
     });
   }
 

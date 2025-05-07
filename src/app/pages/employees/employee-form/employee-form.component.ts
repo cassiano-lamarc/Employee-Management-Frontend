@@ -17,6 +17,8 @@ import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
 import { EmployeeServiceService } from '../../../services/employee-service/employee-service.service';
 import { FileUploadModule } from 'primeng/fileupload';
+import { HttpErrorResponse } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-employee-form',
@@ -46,12 +48,13 @@ export class EmployeeFormComponent implements OnInit {
 
   constructor(
     private readonly employeeService: EmployeeServiceService,
-    private readonly departmentService: DepartmentServiceService
+    private readonly departmentService: DepartmentServiceService,
+    private readonly messageService: MessageService
   ) {
     this.employeeForm = new FormGroup({
       firstName: new FormControl('', [Validators.required]),
       lastName: new FormControl(''),
-      phone: new FormControl(''),
+      phone: new FormControl('', [Validators.required]),
       departmentId: new FormControl('', [Validators.required]),
       hireDate: new FormControl('', [Validators.required]),
       address: new FormGroup({
@@ -99,6 +102,16 @@ export class EmployeeFormComponent implements OnInit {
             });
           } else this.emitDialog.emit(true);
         },
+        error: (error: HttpErrorResponse) => {
+          if (error.status === 400){
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: error?.error?.title ?? 'Try again!',
+              life: 3000,
+            });
+          }
+        }
       });
     }
   }

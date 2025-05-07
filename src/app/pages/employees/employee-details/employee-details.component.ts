@@ -16,6 +16,7 @@ import {
 import { ButtonModule } from 'primeng/button';
 import { forkJoin } from 'rxjs';
 import { MessageService } from 'primeng/api';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-employee-details',
@@ -84,6 +85,16 @@ export class EmployeeDetailsComponent implements OnInit {
           });
 
           this.getEmployeeDetails();
+        },
+        error: (error: HttpErrorResponse) => {
+          if (error.status === 400) {
+            this.messageService.add({
+              severity: 'error',
+              summary: 'Error',
+              detail: error?.error?.title ?? 'Try again!',
+              life: 3000,
+            });
+          }
         },
       });
   }
