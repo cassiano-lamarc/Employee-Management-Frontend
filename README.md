@@ -1,5 +1,4 @@
-# SoftwaremindFrontendEmployeeManager
-Employees Management Frontend – Angular 19
+# Employees Management Frontend – Angular 19
 
 This is the frontend application for the Employees Management API, built using Angular 19. It consumes a secure .NET 9 backend via JWT-based authentication and provides a clean, responsive interface for managing employee data.
 
